@@ -2,11 +2,11 @@ import create from "zustand";
 
 const useScoreStore = create((set) => ({
   name: "",
-  gameFinished: false,
+  currentStage: 1,
   score: 0,
   setName: (name) => set(() => ({ name })),
-  setGameFinished: (gameFinished) => set(() => ({ gameFinished })),
   setScore: (score) => set(() => ({ score })),
+  setCurrentStage: (currentStage) => set(() => ({ currentStage })),
 }));
 
 export default function useStore() {

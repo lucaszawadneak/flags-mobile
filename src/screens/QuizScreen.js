@@ -14,20 +14,15 @@ import AnswerButton from "../components/AnswerButton";
 import useStore from "../store";
 
 const QuizScreen = ({ navigation, route }) => {
-  const { name } = useStore();
+  const { name, currentStage, setCurrentStage, score, setScore } = useStore();
   const [quizCountries, setQuizCountries] = useState([]);
   const [country, setCountry] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState(null);
-  let reset = false;
-  if (route.params.reset !== null || route.params.reset !== undefined) {
-    reset = route.params.reset;
-  }
 
   useEffect(() => {
     const question = sample(countries, 4);
     setQuizCountries(question);
-    reset = false;
-  }, [reset]);
+  }, []);
 
   useEffect(() => {
     if (quizCountries[0] !== undefined) {
@@ -42,7 +37,9 @@ const QuizScreen = ({ navigation, route }) => {
   };
 
   const confirmChoice = () => {
+    setCurrentStage(currentStage + 1);
     const gotItRight = country == selectedCountry;
+    if (gotItRight) setScore(score + 1);
     navigation.navigate("Answer", { gotItRight });
   };
 
@@ -50,6 +47,8 @@ const QuizScreen = ({ navigation, route }) => {
     // console.log(country)
     return (
       <View style={styles.container}>
+        <Text>{currentStage}/10</Text>
+        <text>Pontos: {score}</text>
         <Text style={styles.title}>
           {`${name} selecione a qual país a bandeira abaixo pertence?`}
         </Text>
