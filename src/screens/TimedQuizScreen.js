@@ -14,11 +14,12 @@ export default function TimedQuizScreen({ navigation }) {
   const [quizCountries, setQuizCountries] = React.useState([]);
   const [country, setCountry] = React.useState(null);
   const [selectedCountry, setSelectedCountry] = React.useState(null);
+  const [answer, setAnswer] = React.useState(null);
 
   useEffect(() => {
     const question = sample(countries, 4);
     setQuizCountries(question);
-  }, []);
+  }, [checkAnswer]);
 
   useEffect(() => {
     if (quizCountries[0] !== undefined) {
@@ -50,7 +51,15 @@ export default function TimedQuizScreen({ navigation }) {
   };
 
   const handleCheckAnswer = () => {
-
+    setAnswer(selectedCountry === country)
+    setCheckAnswer(true)
+  }
+  
+  const handleContinue = () => {
+    if(answer){
+      setScore(score + 1)      
+    }
+    setCheckAnswer(false)
   }
 
   React.useEffect(() => {
@@ -107,7 +116,7 @@ export default function TimedQuizScreen({ navigation }) {
               title="Confirmar"
               style={styles.confirmButton}
               disabled={selectedCountry == null}
-              onPress={() => confirmChoice()}
+              onPress={() => handleCheckAnswer()}
             />
           </View>
         }
@@ -149,5 +158,21 @@ const styles = StyleSheet.create({
   confirmButton: {
     width: 100,
     paddingHorizontal: 20,
+  },
+  containerCorrect: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "green",
+    paddingVertical: 30,
+  },
+  containerIncorrect: {
+    display: "flex",
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "red",
+    paddingVertical: 30,
   },
 });
