@@ -14,7 +14,7 @@ import api from "../services/api";
 const PlayerScoreScreen = ({ navigation, route }) => {
   const { name, score, setCurrentStage, setScore } = useStore();
 
-  const isTimed = useMemo(() => route.params.timed, [route]);
+  const isTimed = useMemo(() => route?.params?.timed, [route]);
   const handleSaveAnswer = async () => {
     const url = isTimed ? "/timedscores" : "/scores";
     try {

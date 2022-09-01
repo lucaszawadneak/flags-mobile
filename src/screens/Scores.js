@@ -1,5 +1,5 @@
 import { View, Text, FlatList } from "react-native";
-import React from "react";
+import React, { useMemo } from "react";
 import api from "../services/api";
 
 export default function ScoresScreen() {
@@ -14,6 +14,13 @@ export default function ScoresScreen() {
       console.error(err);
     }
   };
+
+  const sortedScores = useMemo(
+    () =>
+      baseScores?.filter((s) => !!s.name).sort((a, b) => b.score - a.score) ||
+      [],
+    [baseScores]
+  );
 
   React.useEffect(() => {
     handleGetBaseScores();
@@ -35,9 +42,7 @@ export default function ScoresScreen() {
   return (
     <View>
       <FlatList
-        data={baseScores
-          .filter((s) => !!s.name)
-          .sort((a, b) => a.score < b.score)}
+        data={sortedScores}
         keyExtractor={(item) => item.id.toString()}
         ListEmptyComponent={() => (
           <View style={{ textAlign: "center", marginTop: 20 }}>
