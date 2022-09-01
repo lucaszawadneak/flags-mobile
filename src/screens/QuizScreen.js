@@ -48,7 +48,7 @@ const QuizScreen = ({ navigation, route }) => {
     return (
       <View style={styles.container}>
         <Text>{currentStage}/10</Text>
-        <text>Pontos: {score}</text>
+        <Text>Pontos: {score}</Text>
         <Text style={styles.title}>
           {`${name} selecione a qual país a bandeira abaixo pertence?`}
         </Text>

@@ -8,7 +8,7 @@ import AnswerButton from "../components/AnswerButton";
 export default function TimedQuizScreen({ navigation }) {
   const [time, setTime] = React.useState(0);
   const [timeInterval, setTimeInterval] = React.useState(null);
-  const [checkAnswer, setCheckAnswer] = React.useState(false)
+  const [checkAnswer, setCheckAnswer] = React.useState(false);
 
   const { name, currentStage, setCurrentStage, score, setScore } = useStore();
   const [quizCountries, setQuizCountries] = React.useState([]);
@@ -51,21 +51,21 @@ export default function TimedQuizScreen({ navigation }) {
   };
 
   const handleCheckAnswer = () => {
-    setAnswer(selectedCountry === country)
-    setCheckAnswer(true)
-  }
-  
+    setAnswer(selectedCountry === country);
+    setCheckAnswer(true);
+  };
+
   const handleContinue = () => {
-    if(answer){
-      setScore(score + 1)      
+    if (answer) {
+      setScore(score + 1);
     }
-    setCheckAnswer(false)
-  }
+    setCheckAnswer(false);
+  };
 
   React.useEffect(() => {
     if (time === 30) {
       clearInterval(timeInterval);
-      navigation.navigate("PlayerScore");
+      navigation.navigate("PlayerScore", { timed: true });
     }
   }, [time]);
 
@@ -73,9 +73,11 @@ export default function TimedQuizScreen({ navigation }) {
     return (
       <View style={styles.container}>
         <Text>Tempo: {time}s</Text>
-        {checkAnswer ?
+        {checkAnswer ? (
           <View
-            style={[answer ? styles.containerCorrect : styles.containerIncorrect]}
+            style={[
+              answer ? styles.containerCorrect : styles.containerIncorrect,
+            ]}
           >
             <Text>{answer ? "Acertou!" : "Errou!"}</Text>
             <Image
@@ -88,7 +90,7 @@ export default function TimedQuizScreen({ navigation }) {
               onPress={handleContinue}
             />
           </View>
-          :
+        ) : (
           <View style={styles.containerr}>
             <Text>Pontos: {score}</Text>
             <Text style={styles.title}>
@@ -118,11 +120,9 @@ export default function TimedQuizScreen({ navigation }) {
               onPress={() => handleCheckAnswer()}
             />
           </View>
-        }
-
+        )}
       </View>
-
-    )
+    );
   } else {
     return (
       <View>
