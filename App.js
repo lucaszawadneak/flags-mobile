@@ -6,6 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import QuizScreen from "./src/screens/QuizScreen";
 import AnswerScreen from "./src/screens/AnswerScreen";
 import ScoresScreen from "./src/screens/Scores";
+import PlayerScoreScreen from "./src/screens/PlayerScoreScreen";
 import TimedQuizScreen from "./src/screens/TimedQuizScreen";
 
 const Stack = createNativeStackNavigator();
@@ -19,6 +20,7 @@ function App() {
           <Stack.Screen name="Quiz" component={QuizScreen} />
           <Stack.Screen name="Answer" component={AnswerScreen} />
           <Stack.Screen name="Scores" component={ScoresScreen} />
+          <Stack.Screen name="PlayerScore" component={PlayerScoreScreen} />
           <Stack.Screen name="TimedQuiz" component={TimedQuizScreen} />
         </Stack.Navigator>
       </NavigationContainer>
