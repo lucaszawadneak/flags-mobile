@@ -20,18 +20,8 @@ const AnswerScreen = ({ navigation, route }) => {
     setAnswer(right);
   }, []);
 
-  const handleSaveAnswer = async () => {
-    try {
-      const response = await api.post("/scores", { name, score });
-    } catch (err) {
-      alert("Tivemos um problema ao salvar seu score!");
-      console.error(err);
-    }
-  };
-
   const handleContinue = () => {
     if (currentStage === 10) {
-      handleSaveAnswer();
       return navigation.navigate("PlayerScore");
     }
     navigation.replace("Quiz");
