@@ -30,7 +30,7 @@ const AnswerScreen = ({ navigation, route }) => {
   };
 
   const handleContinue = () => {
-    if (currentStage === 2) {
+    if (currentStage === 10) {
       handleSaveAnswer();
       return navigation.navigate("PlayerScore");
     }
