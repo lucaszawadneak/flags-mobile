@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Text, StyleSheet, TextInput, Button, View } from "react-native";
+import useStore from "../store";
 
 const HomeScreen = ({ navigation }) => {
-  const [name, setName] = useState("McGaiver");
+  const { name, setName } = useStore();
 
   return (
     <View style={styles.container}>
@@ -13,10 +14,7 @@ const HomeScreen = ({ navigation }) => {
         value={name}
         onChangeText={(newName) => setName(newName)}
       />
-      <Button
-        title="INICIAR"
-        onPress={() => navigation.navigate("Quiz", { name })}
-      />
+      <Button title="INICIAR" onPress={() => navigation.navigate("Quiz")} />
       <Button
         title="PONTUAÇÕES"
         onPress={() => navigation.navigate("Scores")}
