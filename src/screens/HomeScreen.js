@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Text, StyleSheet, TextInput, Button, View } from 'react-native';
+import React, { useState } from "react";
+import { Text, StyleSheet, TextInput, Button, View } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
-
-  const [name, setName] = useState('McGaiver')
+  const [name, setName] = useState("McGaiver");
 
   return (
     <View style={styles.container}>
@@ -12,38 +11,44 @@ const HomeScreen = ({ navigation }) => {
       <TextInput
         style={styles.nameInput}
         value={name}
-        onChangeText={(newName) => setName(newName)} />
-      <Button title='INICIAR' onPress={() => navigation.navigate('Quiz', { name })} />
+        onChangeText={(newName) => setName(newName)}
+      />
+      <Button
+        title="INICIAR"
+        onPress={() => navigation.navigate("Quiz", { name })}
+      />
+      <Button
+        title="PONTUAÇÕES"
+        onPress={() => navigation.navigate("Scores")}
+      />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   h1: {
     fontSize: 35,
-    textTransform: 'uppercase'  
+    textTransform: "uppercase",
   },
   h2: {
     fontSize: 24,
   },
   nameInput: {
-    borderColor: 'purple',
+    borderColor: "purple",
     borderWidth: 1,
     borderRadius: 10,
     padding: 5,
     marginBottom: 10,
     marginTop: 10,
-    height: 50
+    height: 50,
   },
-  startButton: {
-
-  }
+  startButton: {},
 });
 
 export default HomeScreen;
