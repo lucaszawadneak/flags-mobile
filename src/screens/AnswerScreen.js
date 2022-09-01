@@ -9,6 +9,7 @@ import {
   FlatList,
 } from "react-native";
 import useStore from "../store";
+import api from "../services/api";
 
 const AnswerScreen = ({ navigation, route }) => {
   const { currentStage } = useStore();
@@ -19,8 +20,18 @@ const AnswerScreen = ({ navigation, route }) => {
     setAnswer(right);
   }, []);
 
+  const handleSaveAnswer = async () => {
+    try {
+      const response = await api.post("/scores");
+    } catch (err) {
+      alert("Tivemos um problema ao salvar seu score!");
+      console.error(err);
+    }
+  };
+
   const handleContinue = () => {
     if (currentStage === 2) {
+      handleSaveAnswer();
       return navigation.navigate("PlayerScoreScreen");
     }
     navigation.replace("Quiz");
