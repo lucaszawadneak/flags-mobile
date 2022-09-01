@@ -12,7 +12,7 @@ import useStore from "../store";
 import api from "../services/api";
 
 const AnswerScreen = ({ navigation, route }) => {
-  const { currentStage } = useStore();
+  const { currentStage, name, score } = useStore();
   const [answer, setAnswer] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const AnswerScreen = ({ navigation, route }) => {
 
   const handleSaveAnswer = async () => {
     try {
-      const response = await api.post("/scores");
+      const response = await api.post("/scores", { name, score });
     } catch (err) {
       alert("Tivemos um problema ao salvar seu score!");
       console.error(err);
