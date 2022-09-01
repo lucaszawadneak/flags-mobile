@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
         value={name}
         onChangeText={(newName) => setName(newName)}
       />
-      <Button title="INICIAR" onPress={() => navigation.navigate("Quiz")} />
+      <Button title="INICIAR" onPress={() => navigation.navigate("Quiz", {})} />
       <Button
         title="PONTUAÇÕES"
         onPress={() => navigation.navigate("Scores")}

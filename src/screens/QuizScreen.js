@@ -51,8 +51,7 @@ const QuizScreen = ({ navigation, route }) => {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          {name}, <br />
-          selecione a qual país a bandeira abaixo pertence?
+          {`${name} selecione a qual país a bandeira abaixo pertence?`}
         </Text>
         <Image
           source={{ uri: `https://countryflagsapi.com/png/${country}` }}
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: 20,
   },
   title: {
     fontWeight: "bold",
