@@ -35,7 +35,9 @@ export default function ScoresScreen() {
   return (
     <View>
       <FlatList
-        data={baseScores.filter((s) => !!s.name)}
+        data={baseScores
+          .filter((s) => !!s.name)
+          .sort((a, b) => a.score < b.score)}
         keyExtractor={(item) => item.id.toString()}
         ListEmptyComponent={() => (
           <View style={{ textAlign: "center", marginTop: 20 }}>
