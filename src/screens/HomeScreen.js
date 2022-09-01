@@ -16,6 +16,10 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button title="INICIAR" onPress={() => navigation.navigate("Quiz", {})} />
       <Button
+        title="INICIAR COM TEMPO"
+        onPress={() => navigation.navigate("TimedQuiz")}
+      />
+      <Button
         title="PONTUAÇÕES"
         onPress={() => navigation.navigate("Scores")}
       />
