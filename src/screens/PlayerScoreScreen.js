@@ -9,7 +9,7 @@ const PlayerScoreScreen = ({ navigation, route }) => {
     const reset = () => {
         setScore(0)
         setCurrentStage(1)
-        navigation.navigate('Quiz')
+        navigation.replace('Quiz')
     }
     
     const end = () => {

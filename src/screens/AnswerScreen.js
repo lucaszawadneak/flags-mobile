@@ -32,7 +32,7 @@ const AnswerScreen = ({ navigation, route }) => {
   const handleContinue = () => {
     if (currentStage === 2) {
       handleSaveAnswer();
-      return navigation.navigate("PlayerScoreScreen");
+      return navigation.navigate("PlayerScore");
     }
     navigation.replace("Quiz");
   };
