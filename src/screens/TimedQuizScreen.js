@@ -71,7 +71,7 @@ export default function TimedQuizScreen({ navigation }) {
 
   if (time !== 0) {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Tempo: {time}s</Text>
         {checkAnswer ?
           <View
@@ -80,8 +80,7 @@ export default function TimedQuizScreen({ navigation }) {
             <Text>{answer ? "Acertou!" : "Errou!"}</Text>
             <Image
               style={styles.icon}
-              source={require(`../../assets/${answer ? "ic_correct" : "ic_wrong"
-                }.png`)}
+              source={require(`../../assets/${answer ? "ic_correct" : "ic_wrong"}.png`)}
             />
             <Button
               title="Continuar"
@@ -90,7 +89,7 @@ export default function TimedQuizScreen({ navigation }) {
             />
           </View>
           :
-          <View style={styles.container}>
+          <View style={styles.containerr}>
             <Text>Pontos: {score}</Text>
             <Text style={styles.title}>
               {`${name} selecione a qual país a bandeira abaixo pertence?`}
@@ -137,9 +136,18 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
+    width: '100%',
+    height: '100%',
+    justifyContent: "center",
+    // alignItems: "center",
+  },
+  containerr: {
+    display: "flex",
+    flex: 1,
+    width: '100%',
+    height: '100%',
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 20,
   },
   title: {
     fontWeight: "bold",
@@ -160,7 +168,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   containerCorrect: {
-    display: "flex",
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
@@ -168,11 +175,14 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
   },
   containerIncorrect: {
-    display: "flex",
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "red",
     paddingVertical: 30,
+  },
+  icon: {
+    height: 200,
+    width: 200,
   },
 });
